@@ -33,10 +33,10 @@ class WRBoard
         SSMachine ssm; //Serial State Machine
         WRMux mux; //Multiplexer controller
         LED led; //LED controller
-        void init(uint16_t baudrate){
+        void init(uint16_t _baudrate){
             pinMode(WRLED, OUTPUT); //Set the LED pin as output
             this->led.on(); //Turn on the LED
-            Serial.begin(9600);
+            Serial.begin(_baudrate);
             this->ssm.setSerial(&Serial); //Set the serial port of the Serial State Machine
             this->mux.init(); //Set up the WindRose Mux
         }

@@ -9,7 +9,7 @@ class Being
 
   public:
     boolean alive = 1; //Starts Alive (0 dead or 1 alive)
-    unsigned long lifetime = 0; //It just born (how long it's up)
+    uint32_t lifetime = 0; //It just born (how long it's up)
     SensingData sensors; //Sensing Data Struct
     long ASBM = 0x00; //Active Sensor Byte Maps starts unset (64 bit total)
 

@@ -1,4 +1,5 @@
 #include <Arduino.h> //Arduino header
+#include "Config.h" //Config header
 #include "WindRose.h" //WindRose Board class (State Machine, Mux, LED etc)
 #include "Being.h" //Being class for storing automata data and managing sensors
 
@@ -10,7 +11,7 @@ unsigned long lastcom = 0; //Timer for getting and sending data
 
 void setup() {
 
-  wr.init(9600); //Initialize the board setting the baud rate
+  wr.init(WRBAUDRATE); //Initialize the board setting the baud rate
   wr.mux.set(N); //Set the mux to the north edge
   wr.mux.enable(); //Enable the WindRose Mux
   delay(100); //Wait for the serial buffer to get some data
@@ -43,7 +44,7 @@ void loop() {
   {
     wr.ssm.getData(&ngHood[wr.mux.getdir()]);//getting data from a neighbour
     
-    /*
+   #ifdef WRDEBUG 
     ////// DEBUG CODE --> REMOVE LATER
     Serial.print(wr.getdirchar());
     if(ngHood[wr.mux.getdir()].alive){
@@ -56,13 +57,14 @@ void loop() {
       wr.ssm.sendData(&ngHood[wr.mux.getdir()]); //sending data of a neighbour for testing
     }
     ////// <-- DEBUG CODE
-    */
-    
+    #else
     wr.ssm.sendData(&mySelf); //sending data of the current cell
+    #endif
+
     wr.mux.next(); //Move to the next edge
     wr.ssm.clearBuffer(); //Clear the buffer
     wr.mux.enable(); //Enable the WindRose Mux
-    delay(50); //Wait for the serial buffer to get some data
+    //delay(50); //Wait for the serial buffer to get some data
     wr.led.toggle(); //Toggle the LED
     lastcom = millis(); //Reset the timer
   }

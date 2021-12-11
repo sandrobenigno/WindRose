@@ -1,6 +1,7 @@
 #ifndef SSMachine_h
 #define SSMachine_h
 
+#include "Config.h" //Config header
 #include "Sensing.h"
 #include "Being.h"
 #include "WRMux.h"
@@ -44,7 +45,7 @@ class SSMachine
       this->_stmRef->write(CRC_ck_b); //Write the seed B
 
       //Write the Being Lifetime (4 bytes)
-      unsigned long lifetime = millis();
+      uint32_t lifetime = millis();
       DATA_buffer[ck] = byte(lifetime >> 24 & 0xFF);
       DATA_buffer[ck+1] = byte(lifetime >> 16 & 0xFF);
       DATA_buffer[ck+2] = byte(lifetime >> 8 & 0xFF);
@@ -180,15 +181,23 @@ class SSMachine
       uint8_t DT_ck_a, DT_ck_b = 0;  //Variables to store the external CRC checksum
       this->ck_a = 0; //Reset the internal CRC checksum accumulator A
       this->ck_b = 0; //Reset the internal CRC checksum accumulator B
-
+#ifdef WRDEBUG
+      _stmRef->println("Entered getData");
+#endif
       nb->alive = false; //Reset the neighbour being alive flag
       this->trustpack = false; //Reset the trust packet flag
 
       uint8_t numc = this->_stmRef->available();
       if (numc > 0){
+#ifdef WRDEBUG
+      _stmRef->println("Ther is something to read");
+#endif
         //for(int i=0;i<numc;i++)  //Process bytes received
         while(this->_stmRef->available() && keepgoing)
         {
+#ifdef WRDEBUG
+      _stmRef->println("Entered the read loop");
+#endif
           data = this->_stmRef->read();
           switch(DT_step)  //We start from zero. Here starts the State Machine
           {
@@ -213,8 +222,12 @@ class SSMachine
               DT_step=0;   //Nop, so close, but not this time... so restart from step zero and try again.     
             break;
           case 3:  
-            if(data==char('S'))  // DATA sync char 4 (0x53)
+            if(data==char('S')){  // DATA sync char 4 (0x53)
               DT_step++;   //YEESSSS!!! The fourth data packet is correct, jump to the step 4
+#ifdef WRDEBUG
+              _stmRef->println("Header OK");
+#endif
+            }
             else 
               DT_step=0;   //Nop, is not correct, so restart from step zero and try again.     
             break;
@@ -227,27 +240,28 @@ class SSMachine
             DT_step++;
             break;
 
-          //HERE IS THE ASBM CAPTURE (MSB -> Most Significant Byte First Order)
+          //HERE IS (LIFETIME AND ASBM) GRABBING (MSB -> Most Significant Byte First Order)
 
           case 6:
+            nb->lifetime = 0; //Reset the neighbour lifetime;
+            this->checksum(data); //First checksum (data taken from the while loop)
+            nb->lifetime |= uint32_t(data) << 24; //Get the MSB of the lifetime (Byte 4)
+            data = this->readsum(); //Starting to use the function readsum (read+checksum)
+            nb->lifetime |= uint32_t(data) << 16; //Get the MSB of the lifetime (Byte 3)
+            data = this->readsum();
+            nb->lifetime |= uint32_t(data) << 8; //Get the MSB of the lifetime (Byte 2)
+            data = this->readsum();
+            nb->lifetime |= uint32_t(data); //Get the MSB of the lifetime (Byte 1)
+
             nb->ASBM = 0x00;
+            data = this->readsum();
             nb->ASBM |= uint32_t(data)<<24; //Getting the Active Sensor Map (Byte 4)
-            this->checksum(data);
-            DT_step++;
-            break;
-          case 7:
+            data = this->readsum();
             nb->ASBM |= uint32_t(data)<<16;  //Getting the Active Sensor Map (Byte 3)
-            this->checksum(data);
-            DT_step++;
-            break;
-          case 8:
+            data = this->readsum();
             nb->ASBM |= uint32_t(data)<<8;  //Getting the Active Sensor Map (Byte 2)
-            this->checksum(data);
-            DT_step++;
-            break;
-          case 9:
+            data = this->readsum();
             nb->ASBM |= data;  //Getting the Active Sensor Map (Byte 1)
-            this->checksum(data);
             
             //HERE STARTS THE DYNAMIC SENSOR GRABBING
 
@@ -413,11 +427,11 @@ class SSMachine
             break;
 
           //Checksum Block
-          case 10:
+          case 7:
             DT_ck_a = data; //Getting byte checksum A
             DT_step++;
             break;
-          case 11:
+          case 8:
             DT_ck_b = data; //Getting byte checksum B
             if((this->ck_a==DT_ck_a) && (this->ck_b==DT_ck_b)){ //Checksum is correct
               nb->sensors = sensdata; //Sending the data to the neigbour repository
