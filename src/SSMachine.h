@@ -35,7 +35,7 @@ class SSMachine
 
     void sendData(Being *me)
     {
-      byte DATA_buffer[MAX_SENSING_BYTES_PER_PACKET + 4]; // All sensors plus 4 extra bytes for ASBM
+      byte DATA_buffer[MAX_SENSING_BYTES_PER_PACKET + 8]; // All sensors + 4 ASBM + 4 Lifetime
       uint8_t ck = 0; //Byte checksum accumulator
       byte CRC_ck_a = 0x06; //Checksum accumulator A (Starting by the seed A)
       byte CRC_ck_b = 0x02; //Checksum seed B (Starting by the seed B)

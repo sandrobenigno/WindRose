@@ -11,7 +11,7 @@ class Being
     boolean alive = 1; //Starts Alive (0 dead or 1 alive)
     uint32_t lifetime = 0; //It just born (how long it's up)
     SensingData sensors; //Sensing Data Struct
-    long ASBM = 0x00; //Active Sensor Byte Maps starts unset (64 bit total)
+    long ASBM = 0x00; //Active Sensor Byte Maps starts unset (32 bit total)
 
     void activate(uint8_t idx){ //Activate a sensor
         ASBM |= 0x01<<idx; //Set sense bit at idx
