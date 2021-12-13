@@ -29,6 +29,7 @@ void loop() {
   // Sensor Reading Block //////////////////////////////////////////////////////
 
   mySelf.sensors.light.lux = analogRead(A0); //Read the light sensor
+  //mySelf.sensors.light.lux = ngHood[W].sensors.light.lux; //Read the light sensor from the west neighbour
   mySelf.sensors.light.temp = 3200; //Set the color temperature to 3200 Kelvin
 
   mySelf.sensors.coord.x = millis(); //Set the x coordinate to the current time
@@ -38,12 +39,13 @@ void loop() {
   mySelf.sensors.wind.dir = millis()/4; //Set the y coordinate to the current time
 
 
+  mySelf.updateLifetime(); //Update myself lifetime
+  
   // Comunication Block ////////////////////////////////////////////////////////
 
-  if(millis() - lastcom > 100) //10Hz block for Comuncate with the neighbours
-  {
-    wr.ssm.getData(&ngHood[wr.mux.getdir()]);//getting data from a neighbour
-    
+  wr.ssm.getData(&ngHood[wr.mux.getdir()]);//Keep trying to be sure
+  mySelf.updateNGS(ngHood); //Update the Neighbouthood Mapping  
+
    #ifdef WRDEBUG 
     ////// DEBUG CODE --> REMOVE LATER
     Serial.print(wr.getdirchar());
@@ -57,15 +59,15 @@ void loop() {
       wr.ssm.sendData(&ngHood[wr.mux.getdir()]); //sending data of a neighbour for testing
     }
     ////// <-- DEBUG CODE
-    #else
+  #else
     wr.ssm.sendData(&mySelf); //sending data of the current cell
-    #endif
+  #endif
 
-    wr.mux.next(); //Move to the next edge
-    wr.ssm.clearBuffer(); //Clear the buffer
-    wr.mux.enable(); //Enable the WindRose Mux
-    //delay(50); //Wait for the serial buffer to get some data
-    wr.led.toggle(); //Toggle the LED
-    lastcom = millis(); //Reset the timer
-  }
+  wr.mux.disable(); //Disable the WindRose Mux
+  wr.ssm.clearBuffer(); //Clear the buffer
+  wr.mux.next(); //Move to the next edge
+  wr.mux.enable(); //Enable the WindRose Mux
+  delay(200); //Wait for the serial buffer to get some data
+  wr.led.toggle(); //Toggle the LED
+  lastcom = millis(); //Reset the timer
 }

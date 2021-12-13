@@ -44,12 +44,16 @@ class SSMachine
       this->_stmRef->write(CRC_ck_a); //Write the seed A
       this->_stmRef->write(CRC_ck_b); //Write the seed B
 
+      //Write the Neighborhood Mapping
+      DATA_buffer[ck] = me->NGS; //Write the NGS
+      ck +=1;
+
       //Write the Being Lifetime (4 bytes)
-      uint32_t lifetime = millis();
-      DATA_buffer[ck] = byte(lifetime >> 24 & 0xFF);
-      DATA_buffer[ck+1] = byte(lifetime >> 16 & 0xFF);
-      DATA_buffer[ck+2] = byte(lifetime >> 8 & 0xFF);
-      DATA_buffer[ck+3] = byte(lifetime & 0xFF);
+      me->lifetime = millis(); //Time since start running
+      DATA_buffer[ck] = byte(me->lifetime >> 24 & 0xFF);
+      DATA_buffer[ck+1] = byte(me->lifetime >> 16 & 0xFF);
+      DATA_buffer[ck+2] = byte(me->lifetime >> 8 & 0xFF);
+      DATA_buffer[ck+3] = byte(me->lifetime & 0xFF);
       ck += 4;      
 
       //Write the ASBM (4 bytes)
@@ -187,8 +191,7 @@ class SSMachine
       nb->alive = false; //Reset the neighbour being alive flag
       this->trustpack = false; //Reset the trust packet flag
 
-      uint8_t numc = this->_stmRef->available();
-      if (numc > 0){
+      if (this->_stmRef->available() > 0){ //If there is some data
 #ifdef WRDEBUG
       _stmRef->println("Ther is something to read");
 #endif
@@ -243,10 +246,13 @@ class SSMachine
           //HERE IS (LIFETIME AND ASBM) GRABBING (MSB -> Most Significant Byte First Order)
 
           case 6:
-            nb->lifetime = 0; //Reset the neighbour lifetime;
             this->checksum(data); //First checksum (data taken from the while loop)
-            nb->lifetime |= uint32_t(data) << 24; //Get the MSB of the lifetime (Byte 4)
+            nb->NGS = data; //Getting the NGS (Neighbourhood State Mapping)
+
+            nb->lifetime = 0; //Reset the neighbour lifetime;
             data = this->readsum(); //Starting to use the function readsum (read+checksum)
+            nb->lifetime |= uint32_t(data) << 24; //Get the MSB of the lifetime (Byte 4)
+            data = this->readsum();
             nb->lifetime |= uint32_t(data) << 16; //Get the MSB of the lifetime (Byte 3)
             data = this->readsum();
             nb->lifetime |= uint32_t(data) << 8; //Get the MSB of the lifetime (Byte 2)
