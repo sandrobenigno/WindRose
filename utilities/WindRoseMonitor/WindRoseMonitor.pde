@@ -51,9 +51,10 @@ void draw()
         lostpack = 0;
         lastlost = millis();
       }
+      drawNGM();
       drawLifetime();
       drawSensors();
-      //println("ASBM: "+binary(int(ASBM))+" Light.lux="+sensdata.light.lux);
+      println("NGM: "+binary(NGM)+" ASBM: "+binary(int(ASBM))+" Light.lux="+sensdata.light.lux);
     }
   }
   else{

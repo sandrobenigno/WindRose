@@ -36,6 +36,33 @@ String MsConversion(int MS) {
   return nf(hours,2)+": " +nf(minutes,2)+ ": "+ nf(seconds,2);
 }
 
+void drawNGM(){
+  pushMatrix();
+    translate(844,696);
+    for(int i=0;i<4;i++){
+      fill(127,250,150);
+      if((NGM>>i & 0b01) == 1){
+        switch(i){
+          case 0: //N
+            rect(29,0,24,12,5);
+            break;
+          case 1: //E
+            rect(69,29,12,24,5);
+            break;
+          case 2: //S
+            rect(29,69,24,12,5);
+            break;
+          case 3: //W
+            rect(0,29,12,24,5);
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  popMatrix();
+}
+
 void drawLPPS(){
   fill(255, 0, 0);
   textSize(16);
