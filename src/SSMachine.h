@@ -40,9 +40,13 @@ class SSMachine
       byte CRC_ck_a = 0x06; //Checksum accumulator A (Starting by the seed A)
       byte CRC_ck_b = 0x02; //Checksum seed B (Starting by the seed B)
 
+      //HERE IS THE PACKET HEADER (6 bytes)
+
       this->_stmRef->write("WRoS"); //Write the header
       this->_stmRef->write(CRC_ck_a); //Write the seed A
       this->_stmRef->write(CRC_ck_b); //Write the seed B
+
+      //HERE STARTS THE PAYLOAD OF THE PACKET
 
       //Write the Neighborhood Mapping
       DATA_buffer[ck] = me->NGS; //Write the NGS
@@ -152,8 +156,11 @@ class SSMachine
       
       //HERE ENDS THE DYNAMIC SENSOR REPORTING
 
-
+      //SENDING THE PAYLOAD OF THE PACKET
       for (int i=0;i<ck;i++) this->_stmRef->write(DATA_buffer[i]); //Write the data to the output stream
+  
+      //FINISHING THE PACKET WITH THE CRC CHECKSUM
+
       for (int i=0;i<ck;i++) //
       {
         CRC_ck_a += DATA_buffer[i]; //Calculate the CRC checksum for the data

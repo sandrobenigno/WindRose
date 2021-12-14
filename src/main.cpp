@@ -7,7 +7,7 @@ WRBoard wr; //The WindRose board object
 Being mySelf; //The current cell
 Being ngHood[4]; //The four neighbours
 
-unsigned long lastcom = 0; //Timer for getting and sending data
+unsigned long timebuffering = 0; //The time the automata has been buffering
 
 void setup() {
 
@@ -29,7 +29,7 @@ void loop() {
   // Sensor Reading Block //////////////////////////////////////////////////////
 
   mySelf.sensors.light.lux = analogRead(A0); //Read the light sensor
-  //mySelf.sensors.light.lux = ngHood[W].sensors.light.lux; //Read the light sensor from the west neighbour
+  //mySelf.sensors.light.lux = ngHood[N].sensors.light.lux; //Read the light sensor from the west neighbour
   mySelf.sensors.light.temp = 3200; //Set the color temperature to 3200 Kelvin
 
   mySelf.sensors.coord.x = millis(); //Set the x coordinate to the current time
@@ -37,7 +37,6 @@ void loop() {
 
   mySelf.sensors.wind.speed = int(sin(float(millis() / 10000.0)) * 1000); //Set the x coordinate to the current time
   mySelf.sensors.wind.dir = millis()/4; //Set the y coordinate to the current time
-
 
   mySelf.updateLifetime(); //Update myself lifetime
   
@@ -67,7 +66,10 @@ void loop() {
   wr.ssm.clearBuffer(); //Clear the buffer
   wr.mux.next(); //Move to the next edge
   wr.mux.enable(); //Enable the WindRose Mux
-  delay(200); //Wait for the serial buffer to get some data
+  timebuffering = millis(); //Reset the timer
+  while (millis() - timebuffering < 200); //Wait for 200ms to buffer the data
+  {
+    wr.ssm.sendData(&mySelf); //sending data while buffering
+  }
   wr.led.toggle(); //Toggle the LED
-  lastcom = millis(); //Reset the timer
 }
