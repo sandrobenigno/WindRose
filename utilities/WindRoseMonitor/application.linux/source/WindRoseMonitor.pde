@@ -5,7 +5,7 @@ ControlP5 cp5;
 DropdownList serialPorts;
 
 Serial _stmRef;  // Create object from Serial class
-final int BAUDRATE = 9600;
+final int BAUDRATE = 19200;
 
 //Drraw Control Variables
 boolean ready = false;
@@ -51,9 +51,10 @@ void draw()
         lostpack = 0;
         lastlost = millis();
       }
+      drawNGM();
       drawLifetime();
       drawSensors();
-      //println("ASBM: "+binary(int(ASBM))+" Light.lux="+sensdata.light.lux);
+      println("NGM: "+binary(NGM)+" ASBM: "+binary(int(ASBM))+" Light.lux="+sensdata.light.lux);
     }
   }
   else{

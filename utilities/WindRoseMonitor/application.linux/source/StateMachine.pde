@@ -3,6 +3,7 @@ byte ck_a = 0;
 byte ck_b = 0; //Local CHK
 byte seed_a = 0;
 byte seed_b = 0; //CHK seeds from Serial data
+byte NGM = 0; //Neighbourhood Map
 int lifetime = 0;
 long ASBM = 0;
 long lastget = 0;
@@ -81,8 +82,12 @@ void getData()
           DT_step++;
           break;
         case 6:
-          lifetime = 0;
+        
           checksum(data);
+          NGM = byte(data); //Getting the Neighborhood State Mapping
+        
+          lifetime = 0;
+          data = readsum();
           lifetime |= (data)<<24; //Getting the Lifetime (Byte 4)
           data = readsum();
           lifetime |= (data)<<16; //Getting the Lifetime (Byte 3)
