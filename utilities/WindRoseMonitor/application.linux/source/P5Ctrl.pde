@@ -10,6 +10,8 @@ void customize(DropdownList ddl) {
 
 void controlEvent(ControlEvent theEvent){
   if (theEvent.isController()) {
+    drawBG();
+    drawGrid();
     println("event from controller --> "+theEvent.getController().getValue()+" from "+theEvent.getController());
     int port = int(theEvent.getController().getValue());
     if(_stmRef != null){

@@ -1,9 +1,11 @@
-int oft = 24;
+int oft = 21;
+PImage graf, dots, sens, bg; 
 
-void drawBG(PImage _img){
+void drawBG(){
   //Drawing the background
   background(0);
-  image(_img, 1280 - 460, 0);
+  image(bg, 1280 - 460, 5);
+  image(sens, 0,0);
 }
 
 void drawGrid(){
@@ -19,16 +21,16 @@ void drawGrid(){
       strokeWeight(1);
       stroke(80);
       fill(30);
-      rect(0,stp-oft,180,20,10,10,10,0);
+      rect(0,stp-oft,180,18,10,10,10,0);
       fill(200);
       textSize(12);
-      text(i,5,stp-10);
+      text(i,4,stp-8);
     }
   popMatrix();
 }
 
 String MsConversion(int MS) {
-  int totalSec= (MS / 1000);
+  //int totalSec= (MS / 1000);
   int seconds = (MS / 1000) % 60;
   int minutes = (MS / (1000*60)) % 60;
   int hours = ((MS/(1000*60*60)) % 24);                      
@@ -36,29 +38,54 @@ String MsConversion(int MS) {
   return nf(hours,2)+": " +nf(minutes,2)+ ": "+ nf(seconds,2);
 }
 
+void initImages(){
+  bg = loadImage("bg2.png"); //Background
+  graf = loadImage("graf.png"); //Clean NGM Tracks
+  dots = loadImage("dots.png"); //Pattern for NGM Plot
+  sens = loadImage("sens.png"); //Sensor Mapping Title
+}
+
+void shiftNGN_Graf(){
+  PImage graf_t;
+  graf_t = loadImage("graf.png");
+  graf_t.copy(graf,3,0,297,80,0,0,297,80);
+  graf.copy(graf_t,0,0,300,80,0,0,300,80);
+}
+
 void drawNGM(){
+  shiftNGN_Graf();
   pushMatrix();
-    translate(844,696);
+    translate(845,580);
     for(int i=0;i<4;i++){
       fill(127,250,150);
       if((NGM>>i & 0b01) == 1){
         switch(i){
           case 0: //N
+            fill(255,50,50,157);
+            stroke(0);
             rect(29,0,24,12,5);
+            graf.copy(dots,0,0,3,14,297,0,3,14);
             break;
           case 1: //E
+            fill(0,255,0,157);
             rect(69,29,12,24,5);
+            graf.copy(dots,0,22,3,14,297,22,3,14);
             break;
           case 2: //S
+            fill(50,127,255,157);
             rect(29,69,24,12,5);
+            graf.copy(dots,0,44,3,14,297,44,3,14);
             break;
           case 3: //W
+            fill(255,255,50,157);
             rect(0,29,12,24,5);
+            graf.copy(dots,0,66,3,14,297,66,3,14);
             break;
           default:
             break;
         }
       }
+      image(graf,126,-15,300,70);
     }
   popMatrix();
 }
@@ -66,27 +93,27 @@ void drawNGM(){
 void drawLPPS(){
   fill(255, 0, 0);
   textSize(16);
-  text("LPPM: "+lostrate, 1200, 780);
+  text("LPPM: "+nf(lostrate,3), 1200, 674);
 }
 
 void drawLifetime(){
   fill(180, 180, 0);
   textSize(16);
-  text("Lifetime: "+MsConversion(lifetime), 1000, 780);
+  text("Lifetime: "+MsConversion(lifetime), 975, 674);
 }
 
 void drawSensorName(String name, int pos){
   int offset = oft * pos;
   fill(127,250,150);
   textSize(16);
-  text(name, 30, 13+offset);
+  text(name, 30, 15+offset);
 }
 
 void drawSensorData(String data, int pos){
   int offset = oft * pos;
   fill(127,250,150);
   textSize(16);
-  text(data, 220, 16+offset);
+  text(data, 220, 17+offset);
 }
 
 void drawSensors(){

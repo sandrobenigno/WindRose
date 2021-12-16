@@ -9,10 +9,8 @@ final int BAUDRATE = 19200;
 
 //Drraw Control Variables
 boolean ready = false;
-int panelX = 10;
-int panelY = 15;
-
-PImage bg; //Image for background
+int panelX = 30;
+int panelY = 12;
 
 SensingData_t sensdata;
 String[] portNames;
@@ -21,8 +19,8 @@ String[] portNames;
 
 void setup() 
 {
-  size(1280, 800);
-  frameRate(30);
+  size(1280, 700);
+  frameRate(12);
   portNames = Serial.list();
   
   cp5 = new ControlP5(this);
@@ -30,7 +28,7 @@ void setup()
   for(int i = 0 ; i < portNames.length; i++) serialPorts.addItem(portNames[i], i);
   customize(serialPorts);
 
-  bg = loadImage("bg.png"); //Getting the bg image file
+  initImages();
   sensdata = new SensingData_t();
   println("Program started!");
 }
@@ -43,7 +41,7 @@ void draw()
       lastget = millis();
     }
     if(pack_ok){
-        drawBG(bg);
+        drawBG();
         drawGrid();
         drawLPPS();
       if(millis() - lastlost > 15000){ //Loop of Lost Packs Calculation (4 p/ min)
@@ -58,7 +56,7 @@ void draw()
     }
   }
   else{
-    drawBG(bg);
+    drawBG();
     drawGrid();
   }
 }
