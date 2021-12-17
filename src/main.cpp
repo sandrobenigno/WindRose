@@ -29,7 +29,7 @@ void loop() {
   // Sensor Reading Block //////////////////////////////////////////////////////
 
   mySelf.sensors.light.lux = analogRead(A0); //Read the light sensor
-  //mySelf.sensors.light.lux = ngHood[N].sensors.light.lux; //Read the light sensor from the west neighbour
+  //mySelf.sensors.light.lux = ngHood[W].sensors.light.lux; //Read the light sensor from the west neighbour
   mySelf.sensors.light.temp = 3200; //Set the color temperature to 3200 Kelvin
 
   mySelf.sensors.coord.x = millis(); //Set the x coordinate to the current time
@@ -44,8 +44,9 @@ void loop() {
 
   wr.ssm.getData(&ngHood[wr.mux.getdir()]);//Keep trying to be sure
   mySelf.updateNGS(ngHood); //Update the Neighbouthood Mapping  
+  mySelf.calcDNGS(ngHood); //Inferring diagonal neighbours
 
-   #ifdef WRDEBUG 
+  #ifdef WRDEBUG 
     ////// DEBUG CODE --> REMOVE LATER
     Serial.print(wr.getdirchar());
     if(ngHood[wr.mux.getdir()].alive){

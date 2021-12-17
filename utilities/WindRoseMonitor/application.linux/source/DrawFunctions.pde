@@ -56,7 +56,7 @@ void drawNGM(){
   shiftNGN_Graf();
   pushMatrix();
     translate(845,580);
-    for(int i=0;i<4;i++){
+    for(int i=0;i<8;i++){
       fill(127,250,150);
       if((NGM>>i & 0b01) == 1){
         switch(i){
@@ -80,6 +80,22 @@ void drawNGM(){
             fill(255,255,50,157);
             rect(0,29,12,24,5);
             graf.copy(dots,0,66,3,14,297,66,3,14);
+            break;
+          case 4: //NE
+            fill(127,250,150,127);
+            triangle(60, 0, 80, 0, 80, 20);
+            break;
+          case 5: //SE
+            fill(127,250,150,127);
+            triangle(80, 60, 80, 80, 60, 80);
+            break;
+          case 6: //SW
+            fill(127,250,150,127);
+            triangle(20, 80, 0, 80, 0, 60);
+            break;
+          case 7: //NW
+            fill(127,250,150,127);
+            triangle(0, 0, 20, 0, 0, 20);
             break;
           default:
             break;

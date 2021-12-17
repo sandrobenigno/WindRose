@@ -2,16 +2,11 @@
 #define WindRose_h
 
 #include <Arduino.h>
+#include "Directions.h";
 #include "SSMachine.h" //Machine State for reading neighbours data
 #include "WRMux.h" //WindRose Multiplexer class
 
 #define WRLED A2 //redefine LED_BUILTIN to be the WR LED pin
-
-//Boards directional edges
-#define N 0
-#define E 1
-#define S 2
-#define W 3
 
 class LED {
   public:
