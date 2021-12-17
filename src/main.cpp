@@ -1,4 +1,5 @@
 #include <Arduino.h> //Arduino header
+#include "Directions.h" //Directions header
 #include "Config.h" //Config header
 #include "WindRose.h" //WindRose Board class (State Machine, Mux, LED etc)
 #include "Being.h" //Being class for storing automata data and managing sensors
@@ -68,7 +69,7 @@ void loop() {
   wr.mux.next(); //Move to the next edge
   wr.mux.enable(); //Enable the WindRose Mux
   timebuffering = millis(); //Reset the timer
-  while (millis() - timebuffering < 200); //Wait for 200ms to buffer the data
+  while (millis() - timebuffering < 200) //Wait for 200ms to buffer the data
   {
     wr.ssm.sendData(&mySelf); //sending data while buffering
   }

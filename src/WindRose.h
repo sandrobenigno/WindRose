@@ -2,7 +2,7 @@
 #define WindRose_h
 
 #include <Arduino.h>
-#include "Directions.h";
+#include "Directions.h"
 #include "SSMachine.h" //Machine State for reading neighbours data
 #include "WRMux.h" //WindRose Multiplexer class
 

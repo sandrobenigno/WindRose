@@ -1,7 +1,7 @@
 #ifndef Being_h
 #define Being_h
 
-#include "Directions.h";
+#include "Directions.h"
 #include "Sensing.h"
 
 class Being
