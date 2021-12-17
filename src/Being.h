@@ -35,7 +35,7 @@ class Being
         else return false;//It's down
     }
 
-    void updateNGS(Being _ng[4]){ //Update Neighborhood Status Map
+    void updateNGS(Being * _ng){ //Update Neighborhood Status Map
         this->NGS = 0x00; //Reset ngstatus
         for(uint8_t i=0;i<4;i++){
             if(_ng[i].alive){
@@ -44,7 +44,7 @@ class Being
         }
     }
 
-    void calcDNGS(Being _ng[4]){ //Infer Neighborhood Status Map
+    void calcDNGS(Being * _ng){ //Infer Neighborhood Status Map
         uint8_t DNGS = 0x00; //Inferred Neighborhood Status Map
         for(uint8_t i=0;i<4;i++){
             switch (i){

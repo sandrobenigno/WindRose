@@ -57,12 +57,12 @@ void drawNGM(){
   pushMatrix();
     translate(845,580);
     for(int i=0;i<8;i++){
+      stroke(0);
       fill(127,250,150);
       if((NGM>>i & 0b01) == 1){
         switch(i){
           case 0: //N
             fill(255,50,50,157);
-            stroke(0);
             rect(29,0,24,12,5);
             graf.copy(dots,0,0,3,14,297,0,3,14);
             break;
@@ -102,6 +102,17 @@ void drawNGM(){
         }
       }
       image(graf,126,-15,300,70);
+
+      fill(127);
+      textSize(12);
+      textAlign(CENTER);
+      text(int((1./FPS)*100000.)+" msec", 276, 68);
+      stroke(100);
+      strokeWeight(1);
+      line(126, 65, 126, 75);
+      line(126, 70, 425, 70);
+      line(425, 65, 425, 75);
+      textAlign(LEFT);
     }
   popMatrix();
 }
@@ -109,13 +120,13 @@ void drawNGM(){
 void drawLPPS(){
   fill(255, 0, 0);
   textSize(16);
-  text("LPPM: "+nf(lostrate,3), 1200, 674);
+  text("LPPM: "+nf(lostrate,3), 1202, 680);
 }
 
 void drawLifetime(){
   fill(180, 180, 0);
   textSize(16);
-  text("Lifetime: "+MsConversion(lifetime), 975, 674);
+  text("Lifetime: "+MsConversion(lifetime), 970, 680);
 }
 
 void drawSensorName(String name, int pos){

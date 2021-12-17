@@ -6,6 +6,7 @@ DropdownList serialPorts;
 
 Serial _stmRef;  // Create object from Serial class
 final int BAUDRATE = 19200;
+final int FPS = 25; 
 
 //Drraw Control Variables
 boolean ready = false;
@@ -20,7 +21,7 @@ String[] portNames;
 void setup() 
 {
   size(1280, 700);
-  frameRate(12);
+  frameRate(FPS);
   portNames = Serial.list();
   
   cp5 = new ControlP5(this);

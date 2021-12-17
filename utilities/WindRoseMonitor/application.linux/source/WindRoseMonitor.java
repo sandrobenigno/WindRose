@@ -26,6 +26,7 @@ DropdownList serialPorts;
 
 Serial _stmRef;  // Create object from Serial class
 final int BAUDRATE = 19200;
+final int FPS = 25; 
 
 //Drraw Control Variables
 boolean ready = false;
@@ -40,7 +41,7 @@ String[] portNames;
  public void setup() 
 {
   /* size commented out by preprocessor */;
-  frameRate(12);
+  frameRate(FPS);
   portNames = Serial.list();
   
   cp5 = new ControlP5(this);
@@ -139,12 +140,12 @@ PImage graf, dots, sens, bg;
   pushMatrix();
     translate(845,580);
     for(int i=0;i<8;i++){
+      stroke(0);
       fill(127,250,150);
       if((NGM>>i & 0b01) == 1){
         switch(i){
           case 0: //N
             fill(255,50,50,157);
-            stroke(0);
             rect(29,0,24,12,5);
             graf.copy(dots,0,0,3,14,297,0,3,14);
             break;
@@ -184,6 +185,17 @@ PImage graf, dots, sens, bg;
         }
       }
       image(graf,126,-15,300,70);
+
+      fill(127);
+      textSize(12);
+      textAlign(CENTER);
+      text(PApplet.parseInt((1.f/FPS)*100000.f)+" msec", 276, 68);
+      stroke(100);
+      strokeWeight(1);
+      line(126, 65, 126, 75);
+      line(126, 70, 425, 70);
+      line(425, 65, 425, 75);
+      textAlign(LEFT);
     }
   popMatrix();
 }
@@ -191,13 +203,13 @@ PImage graf, dots, sens, bg;
  public void drawLPPS(){
   fill(255, 0, 0);
   textSize(16);
-  text("LPPM: "+nf(lostrate,3), 1200, 674);
+  text("LPPM: "+nf(lostrate,3), 1202, 680);
 }
 
  public void drawLifetime(){
   fill(180, 180, 0);
   textSize(16);
-  text("Lifetime: "+MsConversion(lifetime), 975, 674);
+  text("Lifetime: "+MsConversion(lifetime), 970, 680);
 }
 
  public void drawSensorName(String name, int pos){
