@@ -69,7 +69,7 @@ void loop() {
   wr.mux.next(); //Move to the next edge
   wr.mux.enable(); //Enable the WindRose Mux
   timebuffering = millis(); //Reset the timer
-  while (millis() - timebuffering < 200) //Wait for 200ms to buffer the data
+  while (millis() - timebuffering < 300) //Wait for 200ms to buffer the data
   {
     wr.ssm.sendData(&mySelf); //sending data while buffering
   }
