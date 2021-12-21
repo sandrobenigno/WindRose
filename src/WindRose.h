@@ -38,7 +38,7 @@ class WRBoard
 
         char getdirchar(){
             char dirs[4] = {'N', 'E', 'S', 'W'};
-            return dirs[this->mux.getdir()];
+            return dirs[this->mux.getDir()];
         }
 
 };

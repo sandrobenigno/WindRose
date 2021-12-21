@@ -3,8 +3,10 @@ import controlP5.*;
 
 ControlP5 cp5;
 DropdownList serialPorts;
+Button bt_StartStop;
 
 Serial _stmRef;  // Create object from Serial class
+int serial_port = 0;
 final int BAUDRATE = 19200;
 final int FPS = 25; 
 
@@ -28,6 +30,9 @@ void setup()
   serialPorts = cp5.addDropdownList("Serial Port...").setPosition(1080,10);
   for(int i = 0 ; i < portNames.length; i++) serialPorts.addItem(portNames[i], i);
   customize(serialPorts);
+
+  bt_StartStop = cp5.addButton("Start");
+  customize(bt_StartStop, false);
 
   initImages();
   sensdata = new SensingData_t();

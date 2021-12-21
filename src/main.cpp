@@ -1,5 +1,4 @@
 #include <Arduino.h> //Arduino header
-#include "Directions.h" //Directions header
 #include "Config.h" //Config header
 #include "WindRose.h" //WindRose Board class (State Machine, Mux, LED etc)
 #include "Being.h" //Being class for storing automata data and managing sensors
@@ -13,7 +12,7 @@ unsigned long timebuffering = 0; //The time the automata has been buffering
 void setup() {
 
   wr.init(WRBAUDRATE); //Initialize the board setting the baud rate
-  wr.mux.set(N); //Set the mux to the north edge
+  wr.mux.setDir(N); //Set the mux to the north edge
   wr.mux.enable(); //Enable the WindRose Mux
   delay(100); //Wait for the serial buffer to get some data
 
@@ -43,7 +42,7 @@ void loop() {
   
   // Comunication Block ////////////////////////////////////////////////////////
 
-  wr.ssm.getData(&ngHood[wr.mux.getdir()]);//Keep trying to be sure
+  wr.ssm.getData(&ngHood[wr.mux.getDir()]);//Keep trying to be sure
   mySelf.updateNGS(ngHood); //Update the Neighbouthood Mapping  
   mySelf.calcDNGS(ngHood); //Inferring diagonal neighbours
 
