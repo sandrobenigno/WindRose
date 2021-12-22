@@ -46,23 +46,7 @@ void loop() {
   mySelf.updateNGS(ngHood); //Update the Neighbouthood Mapping  
   mySelf.calcDNGS(ngHood); //Inferring diagonal neighbours
 
-  #ifdef WRDEBUG 
-    ////// DEBUG CODE --> REMOVE LATER
-    Serial.print(wr.getdirchar());
-    if(ngHood[wr.mux.getdir()].alive){
-      Serial.println(" -> Alive!");
-    } else {
-      Serial.println(" -> Dead!");
-    }
-
-    if(ngHood[wr.mux.getdir()].alive){ //if the neighbour is alive
-      wr.ssm.sendData(&ngHood[wr.mux.getdir()]); //sending data of a neighbour for testing
-    }
-    ////// <-- DEBUG CODE
-  #else
-    wr.ssm.sendData(&mySelf); //sending data of the current cell
-  #endif
-
+  //Changing the direction of the mux to the next neighbour
   wr.mux.disable(); //Disable the WindRose Mux
   wr.ssm.clearBuffer(); //Clear the buffer
   wr.mux.next(); //Move to the next edge
