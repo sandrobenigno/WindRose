@@ -1,3 +1,10 @@
+/** @file Being.h
+ * @brief Being class for storing automata data and managing sensors
+ * @author Sandro Benigno
+ * @version 1.0
+ * @date 2021-12-31
+ */
+
 #ifndef Being_h
 #define Being_h
 
