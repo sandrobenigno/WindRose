@@ -52,12 +52,12 @@ class SSMachine
       DATA_buffer[ck] = me->NGS; //Write the NGS
       ck +=1;
 
-      //Write the Being Lifetime (4 bytes)
-      me->lifetime = millis(); //Time since start running
-      DATA_buffer[ck] = byte(me->lifetime >> 24 & 0xFF);
-      DATA_buffer[ck+1] = byte(me->lifetime >> 16 & 0xFF);
-      DATA_buffer[ck+2] = byte(me->lifetime >> 8 & 0xFF);
-      DATA_buffer[ck+3] = byte(me->lifetime & 0xFF);
+      //Write the Being Age (4 bytes)
+      me->age = millis(); //Time since start running
+      DATA_buffer[ck] = byte(me->age >> 24 & 0xFF);
+      DATA_buffer[ck+1] = byte(me->age >> 16 & 0xFF);
+      DATA_buffer[ck+2] = byte(me->age >> 8 & 0xFF);
+      DATA_buffer[ck+3] = byte(me->age & 0xFF);
       ck += 4;      
 
       //Write the ASBM (4 bytes)
@@ -256,15 +256,15 @@ class SSMachine
             this->checksum(data); //First checksum (data taken from the while loop)
             nb->NGS = data; //Getting the NGS (Neighbourhood State Mapping)
 
-            nb->lifetime = 0; //Reset the neighbour lifetime;
+            nb->age = 0; //Reset the neighbour lifetime;
             data = this->readsum(); //Starting to use the function readsum (read+checksum)
-            nb->lifetime |= uint32_t(data) << 24; //Get the MSB of the lifetime (Byte 4)
+            nb->age |= uint32_t(data) << 24; //Get the MSB of the lifetime (Byte 4)
             data = this->readsum();
-            nb->lifetime |= uint32_t(data) << 16; //Get the MSB of the lifetime (Byte 3)
+            nb->age |= uint32_t(data) << 16; //Get the MSB of the lifetime (Byte 3)
             data = this->readsum();
-            nb->lifetime |= uint32_t(data) << 8; //Get the MSB of the lifetime (Byte 2)
+            nb->age |= uint32_t(data) << 8; //Get the MSB of the lifetime (Byte 2)
             data = this->readsum();
-            nb->lifetime |= uint32_t(data); //Get the MSB of the lifetime (Byte 1)
+            nb->age |= uint32_t(data); //Get the MSB of the lifetime (Byte 1)
 
             nb->ASBM = 0x00;
             data = this->readsum();

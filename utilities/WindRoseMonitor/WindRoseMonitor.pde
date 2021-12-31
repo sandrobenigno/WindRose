@@ -56,7 +56,7 @@ void draw()
         lastlost = millis();
       }
       drawNGM();
-      drawLifetime();
+      drawAge();
       drawSensors();
       println("NGM: "+binary(NGM)+" ASBM: "+binary(int(ASBM))+" Light.lux="+sensdata.light.lux);
     }

@@ -4,29 +4,48 @@
 #include "Directions.h"
 #include "Sensing.h"
 
+/**
+ * @brief The Being class
+ * This class is the base class for all the beings in the simulation.
+ * It contains the basic attributes of a being, such as its age, its state,
+ * its Active Sensors Bit Mapping (ASBM),
+ * the neighborhood state mapping (NGS).
+ */
+
 class Being
 {
   private:
 
   public:
-    boolean alive = 1; //Starts Alive (0 dead or 1 alive)
-    uint32_t lifetime = 0; //It just born (how long it's up)
+    /** @brief The state of the being (dead = 0, alive = 1) */
+    boolean alive = 1; //Starts Alive (1)
+    /** @brief The age of the being, since the board is up. */
+    uint32_t age = 0; //It just borns (0)
+    /** @brief Sensor dada holder 
+     * It has all the sensor types defined in the Sensing.h file
+     * followed by the data from the captured sensors.
+    */
     SensingData sensors; //Sensing Data Struct
+    /** @brief The neighborhood state mapping (NGS) */
     byte NGS =0x00; //Neigborhood Status Map
+    /** @brief The active sensor mapping (ASBM) */
     long ASBM = 0x00; //Active Sensor Byte Maps starts unset (32 bit total)
 
+    /** @brief Active a sensor in the 32bit Active Sensor Bit Map (ASBM) 
+     * @param idx The id of the sensor to be activated
+    */
     void activate(uint8_t idx){ //Activate a sensor
         this->ASBM |= 0x01<<idx; //Set sense bit at idx
     }
-
+    /** @brief Deactivate a sensor in the 32bit Active Sensor Bit Map (ASBM)
+     *  @param idx The id of the sensor to be deactivated
+    */
     void deactivate(uint8_t idx){ //Deactivate a sensor
         this->ASBM &= ~(0x01<<idx); //Unset sense bit at idx
     }
-
-    void updateLifetime(){ //Update lifetime
-        this->lifetime = millis();
-    }
-
+    /** @brief Check if a sensor is active in the 32bit Active Sensor Bit Map (ASBM)
+     * @param bit_pos The bit position(same as the id) of the sensor to be checked in the ASBM
+    */
     boolean isactive(uint8_t bit_pos){ //Check if a sensor is active
         //Check bit on ASBM at bit_pos
         if((this->ASBM>>bit_pos) & 0x01){
@@ -34,7 +53,15 @@ class Being
         }
         else return false;//It's down
     }
+    /** @brief Update the Age of the being by seting it to the current time */
+    void updateAge(){ //Update age (uptime)
+        this->age = millis();
+    }
 
+    /** @brief Update the 8bit Neighborhood State Map (NGS)
+     * by setting it's four less significant bits to dead(0) or alive(1)
+     * @param Being* The being to be checked against (is a pointer to the being to be checked)
+    */
     void updateNGS(Being * _ng){ //Update Neighborhood Status Map
         this->NGS = 0x00; //Reset ngstatus
         for(uint8_t i=0;i<4;i++){
@@ -44,6 +71,10 @@ class Being
         }
     }
 
+    /** @brief Calculate the Diagonal neighbors of the being
+     * and sets the four most significant bits of the 8bit Neighborhood State Map (NGS)
+     * @param Being* The being to be checked against (is a pointer to the being to be checked)
+    */
     void calcDNGS(Being * _ng){ //Infer Neighborhood Status Map
         uint8_t DNGS = 0x00; //Inferred Neighborhood Status Map
         for(uint8_t i=0;i<4;i++){

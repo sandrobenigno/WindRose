@@ -123,10 +123,10 @@ void drawLPPS(){
   text("LPPM: "+nf(lostrate,3), 1202, 680);
 }
 
-void drawLifetime(){
+void drawAge(){
   fill(180, 180, 0);
   textSize(16);
-  text("Lifetime: "+MsConversion(lifetime), 970, 680);
+  text("Age: "+MsConversion(lifetime), 970, 680);
 }
 
 void drawSensorName(String name, int pos){

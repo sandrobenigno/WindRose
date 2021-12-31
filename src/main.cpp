@@ -38,7 +38,7 @@ void loop() {
   mySelf.sensors.wind.speed = int(sin(float(millis() / 10000.0)) * 1000); //Set the x coordinate to the current time
   mySelf.sensors.wind.dir = millis()/4; //Set the y coordinate to the current time
 
-  mySelf.updateLifetime(); //Update myself lifetime
+  mySelf.updateAge(); //Update myself Age
   
   // Comunication Block ////////////////////////////////////////////////////////
 

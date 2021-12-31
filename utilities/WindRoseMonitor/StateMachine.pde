@@ -85,6 +85,7 @@ void getData()
         
           checksum(data);
           NGM = byte(data); //Getting the Neighborhood State Mapping
+          //NGM = 0B1001111; //DEBUG
         
           lifetime = 0;
           data = readsum();
