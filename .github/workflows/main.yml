@@ -1,0 +1,35 @@
+name: AutoDoxygen
+
+# When the workflow will run
+on:
+  # Triggers the workflow on push for the main branch
+  push:
+    branches: [ main ]
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Jobs of this workflow
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Doxygenize
+        # You may pin to the exact commit or the version.
+        # uses: langroodi/doxygenize@5bf82736f94dcda30be8bd84ddfd69d2e7a5a7c0
+        uses: langroodi/doxygenize@v1.5
+        with:
+          # Doxygen configuration file path
+          doxygenconf: ./Doxyfile
+          # Generated HTML documents output folder
+          htmloutput: ./docs/
+          # GitHub Pages branch name
+          ghpagesbranch: main
+          # GitHub Pages directory path
+          ghpagesdir: ./
