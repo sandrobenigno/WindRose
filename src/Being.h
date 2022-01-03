@@ -38,19 +38,19 @@ class Being
     /** @brief The active sensor mapping (ASBM) */
     long ASBM = 0x00; //Active Sensor Byte Maps starts unset (32 bit total)
 
-    /** @brief Active a sensor in the 32bit Active Sensor Bit Map (ASBM) 
+    /** @brief Activates a sensor in the 32bit Active Sensor Bit Map (ASBM) 
      * @param idx The id of the sensor to be activated
     */
     void activate(uint8_t idx){ //Activate a sensor
         this->ASBM |= 0x01<<idx; //Set sense bit at idx (maches with the bit in the ASBM)
     }
-    /** @brief Deactivate a sensor in the 32bit Active Sensor Bit Map (ASBM)
+    /** @brief Deactivates a sensor in the 32bit Active Sensor Bit Map (ASBM)
      *  @param idx The id of the sensor to be deactivated
     */
     void deactivate(uint8_t idx){ //Deactivate a sensor
         this->ASBM &= ~(0x01<<idx); //Unset sense bit at idx (matches with the bit in the ASBM)
     }
-    /** @brief Check if a sensor is active in the 32bit Active Sensor Bit Map (ASBM)
+    /** @brief Checks if a sensor is active in the 32bit Active Sensor Bit Map (ASBM)
      * @param bit_pos The bit position(same as the id) of the sensor to be checked in the ASBM
     */
     boolean isactive(uint8_t bit_pos){ //Check if a sensor is active
@@ -60,12 +60,12 @@ class Being
         }
         else return false;//It's down
     }
-    /** @brief Update the Age of the being by seting it to the current time */
+    /** @brief Updates the Age of the being by seting it to the current time */
     void updateAge(){ //Update age (uptime)
         this->age = millis();
     }
 
-    /** @brief Update the 8bit Neighborhood State Map (NGS)
+    /** @brief Updates the 8bit Neighborhood State Map (NGS)
      * by setting it's four less significant bits to dead(0) or alive(1)
      * @param *_ng The being to be checked against (is a pointer to the being to be checked)
     */
@@ -78,7 +78,7 @@ class Being
         }
     }
 
-    /** @brief Calculate the Diagonal neighbors of the being
+    /** @brief Calculates the Diagonal neighbors of the being
      * and sets the four most significant bits of the 8bit Neighborhood State Map (NGS)
      * @param *_ng The being to be checked against (is a pointer to the being to be checked)
     */

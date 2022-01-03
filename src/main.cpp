@@ -1,7 +1,18 @@
+/** 
+ * @file main.cpp
+ * @brief This file implements the setup and loop of a WindRose board as a cellular automaton.
+ * @details The main.cpp file imports the headers of the two main classes of the project. \n
+ * The class WRBoard is the body of the WindRose cell ,as it controls the multiplexer, the LEDs and runs the Serial State Machine. \n
+ * The class Being represents the cell's being. It's the soul of each WindRose cell and drives the sensing data. \n
+ * @author Sandro Benigno
+ * @version 1.0
+ * @date 2020-01-01
+ */
+
 #include <Arduino.h> //Arduino header
 #include "Config.h" //Config header
-#include "WindRose.h" //WindRose Board class (State Machine, Mux, LED etc)
-#include "Being.h" //Being class for storing automata data and managing sensors
+#include "WindRose.h" //The body: The WindRose Board classes (State Machine, Mux, LED etc)
+#include "Being.h" //The soul: The Being class for holding and driving the sensing data
 
 WRBoard wr; //The WindRose board object
 Being mySelf; //The current cell
