@@ -13,7 +13,9 @@
 #include "WindRose.h"
 
 /**
- * @brief The WRMux class The class to operate the WindRose Multiplexer Control.
+ * @brief The class for the WindRose Multiplexer Control.
+ * @details The WRMux class controls the multiplexer of the WindRose. \n
+ * We dont call it directly, instead we call it from the class WRBoard as <mux>.
  */
 class WRMux
 {

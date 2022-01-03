@@ -16,8 +16,9 @@
 
 /** 
  * @brief The class to control the Serial State Machine.
- * @details The SSMachine class holds the functions related to the Serial State Machine.
-  It grabs the data of the Neighbors Sensing, and sends itself data through the Serial port.
+ * @details The SSMachine class holds the functions related to the Serial State Machine. \n
+  It grabs the data of the Neighbors Sensing, and sends itself data through the Serial port. \n
+  We dont call it directly, instead we call it from the class WRBoard as <ssm>.
  */
 class SSMachine
 {

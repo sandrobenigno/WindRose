@@ -17,8 +17,11 @@
 /** @brief defines the LED pin */
 #define WRLED A2 //redefine LED_BUILTIN to be the WR LED pin
 
-/** @brief The class to control the LED */
-class LED {
+/** @brief The class to control the LED 
+ * @details The class LEDControl controls the WindRose's built-in LED. \n
+ * We dont call it directly, instead we call it from the class WRBoard as <led>.
+*/
+class LEDControl {
   public:
     void on(){
         digitalWrite(WRLED, HIGH);
@@ -32,7 +35,7 @@ class LED {
 };
 
 /**
- * @brief The class to control the WindRose Board 
+ * @brief The class to control the WindRose Board (the body).
  * @details The WindRose class holds the functions related directly to the board (the body). \n 
  * It controls the Multiplexer, the LEDs and runs the Serial State Machine.
 */
@@ -44,8 +47,8 @@ class WRBoard
         SSMachine ssm; //Serial State Machine
         /** @brief The WindRose's Multiplexer Control from the class WRMux */
         WRMux mux; //Multiplexer controller
-        /** @brief The WindRose's Blink control from the class LED */
-        LED led; //LED controller
+        /** @brief The WindRose's LED control from the class LEDControl */
+        LEDControl led; //LED controller
         
         /** @brief Initializes the board by starting the LED, the Mux, the Serial Hardware, and the State Machine. */
         void init(uint16_t _baudrate){

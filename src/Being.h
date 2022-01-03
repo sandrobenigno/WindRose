@@ -1,5 +1,5 @@
 /** @file Being.h
- * @brief This file defines the WindRose's Being class (the soul).
+ * @brief This file defines the WindRose's Being class.
  * @author Sandro Benigno
  * @version 1.0
  * @date 2021-12-31
@@ -12,8 +12,8 @@
 #include "Sensing.h"
 
 /**
- * @brief The Being class is the base class for all the beings in the simulation. \n
- * It contains the basic attributes of a being, such as its age, its state, \n
+ * @brief The base class (the soul) for all the beings in the simulation.
+ * @details The Being class contains the basic attributes of a being, such as its age, its state, \n
  * its Active Sensors Bit Mapping (ASBM), \n
  * the Neighborhood State Mapping (NGS). \n
  * It used for storing automata data and managing sensors.
