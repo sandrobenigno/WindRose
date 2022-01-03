@@ -1,5 +1,13 @@
 var searchData=
 [
-  ['updateage_0',['updateAge',['../class_being.html#adeffa3f547e883503e4a40ddb7097532',1,'Being']]],
-  ['updatengs_1',['updateNGS',['../class_being.html#a24c23841ee9d3b496a7eb76093767d48',1,'Being']]]
+  ['senddata_0',['sendData',['../class_s_s_machine.html#afedc1be19224fed3970d04e28e15b1d0',1,'SSMachine']]],
+  ['sensing_2eh_1',['Sensing.h',['../_sensing_8h.html',1,'']]],
+  ['sensingdata_2',['SensingData',['../struct_sensing_data.html',1,'']]],
+  ['sensor_5ftypes_3',['sensor_types',['../_sensing_8h.html#ad7b3bc5128f463a9f210147ad5c043be',1,'Sensing.h']]],
+  ['sensors_4',['sensors',['../class_being.html#a81f4b93d178a350d162297041bb37da7',1,'Being']]],
+  ['setdir_5',['setDir',['../class_w_r_mux.html#aea09c67b4306fefc45f4580f0e1b8f5e',1,'WRMux']]],
+  ['setserial_6',['setSerial',['../class_s_s_machine.html#a81d1db0adbff5c97383b7d2f49732127',1,'SSMachine']]],
+  ['ssm_7',['ssm',['../class_w_r_board.html#aea811bcb6673b445cbff8db349787d0d',1,'WRBoard']]],
+  ['ssmachine_8',['SSMachine',['../class_s_s_machine.html',1,'']]],
+  ['ssmachine_2eh_9',['SSMachine.h',['../_s_s_machine_8h.html',1,'']]]
 ];

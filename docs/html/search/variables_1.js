@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ngs_0',['NGS',['../class_being.html#aa9b0b8b7396c3b1f3503ff1c8e9f75a9',1,'Being']]]
+  ['led_0',['led',['../class_w_r_board.html#a1671e119ed760c0fc3774ccf4e506a1e',1,'WRBoard']]]
 ];
