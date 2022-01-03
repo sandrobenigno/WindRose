@@ -1,6 +1,6 @@
 /**
  * @file WRMux.h
- * @brief WRMux.h contains the WindRose multiplexer Control class.
+ * @brief This file defines the WindRose's Multiplexer Control class WRMux.
  * @author Sandro Benigno
  * @version 1.0
  * @date 2022-01-01

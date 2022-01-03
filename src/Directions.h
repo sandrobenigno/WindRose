@@ -1,3 +1,11 @@
+/**
+ * @file Directions.h
+ * @brief This file defines cardinal and relative directions enumerations.
+ * @author Sandro Benigno
+ * @version 1.0
+ * @date 2021-12-31
+ */
+
 #ifndef Directions_h
 #define Directions_h
 

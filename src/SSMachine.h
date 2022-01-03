@@ -1,6 +1,6 @@
 /** 
  * @file SSMachine.h
- * @brief SSMachine.h contains the Serial State Machine Control class.
+ * @brief This file defines the WindRose's Serial State Machine Control class SSMachine.
  * @author Sandro Benigno
  * @version 1.0
  * @date 2020-01-01

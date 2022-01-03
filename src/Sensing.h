@@ -1,5 +1,6 @@
 /**
- * @brief Sensing.h contains the Sensing types, enumeration and the sensing holder.
+ * @file Sensing.h
+ * @brief This file contains the Sensing types, the sensors enumeration, and defines the sensing holder SensingData.
  * @author Sandro Benigno
  * @version 1.0
  * @date 2021-12-31
