@@ -143,7 +143,9 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>lostpack</b> = 0<
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The class to control the Serial State Machine. </p>
-<p >The <a class="el" href="class_s_s_machine.html" title="The class to control the Serial State Machine.">SSMachine</a> class holds the functions related to the Serial State Machine. It grabs the data of the Neighbors Sensing, and sends itself data through the Serial port. </p>
+<p >The <a class="el" href="class_s_s_machine.html" title="The class to control the Serial State Machine.">SSMachine</a> class holds the functions related to the Serial State Machine. <br  />
+It grabs the data of the Neighbors Sensing, and sends itself data through the Serial port. <br  />
+We dont call it directly, instead we call it from the class <a class="el" href="class_w_r_board.html" title="The class to control the WindRose Board (the body).">WRBoard</a> as &lt;ssm&gt;. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="adc29d517216e6cd0fd500b3e232c681e" name="adc29d517216e6cd0fd500b3e232c681e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc29d517216e6cd0fd500b3e232c681e">&#9670;&nbsp;</a></span>checksum()</h2>
@@ -268,7 +270,7 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>lostpack</b> = 0<
 <p>Sends the data of the itself Sensing data to the Serial port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*me</td><td>pointer to itself <a class="el" href="class_being.html" title="The Being class is the base class for all the beings in the simulation.  It contains the basic attrib...">Being</a> object. </td></tr>
+    <tr><td class="paramname">*me</td><td>pointer to itself <a class="el" href="class_being.html" title="The base class (the soul) for all the beings in the simulation.">Being</a> object. </td></tr>
   </table>
   </dd>
 </dl>
