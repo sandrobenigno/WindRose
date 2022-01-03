@@ -1,34 +1,60 @@
+/**
+ * @file WRMux.h
+ * @brief WRMux.h contains the WindRose multiplexer Control class.
+ * @author Sandro Benigno
+ * @version 1.0
+ * @date 2022-01-01
+ */
+
 #ifndef WRMux_h
 #define WRMux_h
 
 #include "Arduino.h"
 #include "WindRose.h"
 
+/**
+ * @brief The WRMux class The class to operate the WindRose Multiplexer Control.
+ */
 class WRMux
 {
     private:
+        /** @brief MUX_A defines the pin for the MUX_A selector */
         uint8_t MUX_A = 5;
+        /** @brief MUX_B defines the pin for the MUX_B selector */
         uint8_t MUX_B = 6;
+        /** @brief MUX_C defines the pin for the MUX_C selector */
         uint8_t MUX_C = 7;
+        /** @brief INB defines the pin for the Inhibit pin */
         uint8_t INB = 8;
+        /** @brief current_mux defines the current mux direction */
         uint8_t current = 0;
     public:
 
+        /**
+         * @brief Initializes the WRMux class
+         * by seting the control pins as OUTPUT.
+         */
         void init(){
-          pinMode(this->MUX_A, OUTPUT);
-          pinMode(this->MUX_B, OUTPUT);
-          pinMode(this->MUX_C, OUTPUT);
-          pinMode(this->INB, OUTPUT);
+            pinMode(this->MUX_A, OUTPUT);
+            pinMode(this->MUX_B, OUTPUT);
+            pinMode(this->MUX_C, OUTPUT);
+            pinMode(this->INB, OUTPUT);
         }
 
+        /** @brief Unsets the inhibit pin and enable the mux. */
         void enable(){
             digitalWrite(this->INB, LOW);
         }
-
+        
+        /** @brief Sets the inhibit pin and disable the mux. */
         void disable(){
             digitalWrite(this->INB, HIGH);
         }
 
+        /** 
+         * @brief Sets the mux to the direction specified.
+         * @param dir The direction to set the mux (N,S,E,W).
+         */
         void setDir(uint8_t dir){
             this->current = dir;
             uint8_t code_mux = 0b111 - dir; // 0b111 - dir = (0bCBA)
@@ -41,10 +67,23 @@ class WRMux
             digitalWrite(this->MUX_C, (code_mux>>2) & 1); // set C
         }
 
+        /** 
+         * @brief Returns the current direction of the mux.
+         * @return The current direction of the mux as N,S,E,W.
+         */
         uint8_t getDir(){
             return this->current;
         }
 
+        /** @brief Returns the current direction of the mux as a string. */
+        char getdirchar(){
+            char dirs[4] = {'N', 'E', 'S', 'W'};
+            return dirs[this->getDir()];
+        }
+
+        /** 
+         * @brief Sets the mux from the current to the next direction as N,S,E,W.
+         */
         void next(){
             this->current++;
             if(this->current > 3){

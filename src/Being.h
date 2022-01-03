@@ -12,11 +12,10 @@
 #include "Sensing.h"
 
 /**
- * @brief The Being class
- * This class is the base class for all the beings in the simulation.
+ * @brief The Being class is the base class for all the beings in the simulation.
  * It contains the basic attributes of a being, such as its age, its state,
  * its Active Sensors Bit Mapping (ASBM),
- * the neighborhood state mapping (NGS).
+ * the Neighborhood State Mapping (NGS).
  */
 
 class Being
@@ -67,7 +66,7 @@ class Being
 
     /** @brief Update the 8bit Neighborhood State Map (NGS)
      * by setting it's four less significant bits to dead(0) or alive(1)
-     * @param Being* The being to be checked against (is a pointer to the being to be checked)
+     * @param *_ng The being to be checked against (is a pointer to the being to be checked)
     */
     void updateNGS(Being * _ng){ //Update Neighborhood Status Map
         this->NGS = 0x00; //Reset ngstatus
@@ -80,7 +79,7 @@ class Being
 
     /** @brief Calculate the Diagonal neighbors of the being
      * and sets the four most significant bits of the 8bit Neighborhood State Map (NGS)
-     * @param Being* The being to be checked against (is a pointer to the being to be checked)
+     * @param *_ng The being to be checked against (is a pointer to the being to be checked)
     */
     void calcDNGS(Being * _ng){ //Infer Neighborhood Status Map
         uint8_t DNGS = 0x00; //Inferred Neighborhood Status Map

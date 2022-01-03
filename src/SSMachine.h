@@ -1,3 +1,11 @@
+/** 
+ * @file SSMachine.h
+ * @brief SSMachine.h contains the Serial State Machine Control class.
+ * @author Sandro Benigno
+ * @version 1.0
+ * @date 2020-01-01
+ */
+
 #ifndef SSMachine_h
 #define SSMachine_h
 
@@ -6,6 +14,11 @@
 #include "Being.h"
 #include "WRMux.h"
 
+/** 
+ * @brief The class to control the Serial State Machine.
+ * @details The SSMachine class holds the functions related to the Serial State Machine.
+  It grabs the data of the Neighbors Sensing, and sends itself data through the Serial port.
+ */
 class SSMachine
 {
   private:
@@ -17,22 +30,36 @@ class SSMachine
     boolean trustpack = false; //Flag to indicate if the packet is trusted
     uint32_t lostpack = 0; //Number of lost packets
 
+    /**
+     * @brief Initializes the Serial State Machine by setting its internal Stream object to a pointer to the Serial Hardware instance.
+     * @param *stmObject A pointer to the Serial Hardware instance.
+     */
     void setSerial(Stream *stmObject)
     {
       this->_stmRef=stmObject; //Set the reference to the serial port
     }
     
+    /**
+     * @brief Prints the Lost Packets counter to the Serial port.
+     */
     void printLostPack()
     {
       this->_stmRef->print("Lost packets: ");
       this->_stmRef->println(this->lostpack);
     }
 
+    /**
+     * @brief Clears the Serial Buffer.
+     */
     void clearBuffer()
     {
       while (this->_stmRef->available()) this->_stmRef->read(); //Clearing the Serial buffer
     }
 
+    /**
+     * @brief Sends the data of the itself Sensing data to the Serial port.
+     * @param *me pointer to itself Being object.
+     */
     void sendData(Being *me)
     {
       byte DATA_buffer[MAX_SENSING_BYTES_PER_PACKET + 8]; // All sensors + 4 ASBM + 4 Lifetime
@@ -170,18 +197,30 @@ class SSMachine
       this->_stmRef->write(CRC_ck_b);
     }
 
+    /**
+     * @brief This function is used to calculate the CRC checksum for the data
+     * @param dt A byte of grabbed data to be used for the CRC checksum calculation
+     */
     void checksum(byte dt)
     {
       this->ck_a += dt; //Calculate the CRC checksum for the data
       this->ck_b += this->ck_a; 
     }
 
+    /**
+     * @brief This function reads the data from the input stream, calculates the CRC checksum and returns the data
+     * @return Returns the data after the CRC checksum is calculated
+     */
     byte readsum(){
       byte _data = this->_stmRef->read(); //Read the data from the input stream
       this->checksum(_data); //Calculate the CRC checksum for the data
       return _data;
     }
 
+    /**
+     * @brief This function grabs the data from the input stream and feeds the local neigbour sensing data holder
+     * @param *nb A pointer to the targetted local neighbor sensing data holder
+     */
     void getData(Being *nb)
     {
       byte data; //Variable to store the read data
