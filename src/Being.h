@@ -41,13 +41,13 @@ class Being
      * @param idx The id of the sensor to be activated
     */
     void activate(uint8_t idx){ //Activate a sensor
-        this->ASBM |= 0x01<<idx; //Set sense bit at idx
+        this->ASBM |= 0x01<<idx; //Set sense bit at idx (maches with the bit in the ASBM)
     }
     /** @brief Deactivate a sensor in the 32bit Active Sensor Bit Map (ASBM)
      *  @param idx The id of the sensor to be deactivated
     */
     void deactivate(uint8_t idx){ //Deactivate a sensor
-        this->ASBM &= ~(0x01<<idx); //Unset sense bit at idx
+        this->ASBM &= ~(0x01<<idx); //Unset sense bit at idx (matches with the bit in the ASBM)
     }
     /** @brief Check if a sensor is active in the 32bit Active Sensor Bit Map (ASBM)
      * @param bit_pos The bit position(same as the id) of the sensor to be checked in the ASBM
