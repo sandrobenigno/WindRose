@@ -152,8 +152,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ASBM</b> = 0x00</td><
 <tr class="separator:aeea068a17cc6bf1b966f5e0e0873450d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >The base class (the soul) for all the beings in the simulation. </p>
-<p >The <a class="el" href="class_being.html" title="The base class (the soul) for all the beings in the simulation.">Being</a> class contains the basic attributes of a being, such as its age, its state, <br  />
+<div class="textblock"><p >The <a class="el" href="class_being.html" title="The base class (the soul) for all the beings in the simulation.">Being</a> class contains the basic attributes of a being, such as its age, its state, <br  />
 its Active Sensors Bit Mapping (ASBM), <br  />
 the Neighborhood State Mapping (NGS). <br  />
 It used for storing automata data and managing sensors. </p>
@@ -181,8 +180,6 @@ It used for storing automata data and managing sensors. </p>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Active a sensor in the 32bit Active Sensor Bit Map (ASBM) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">idx</td><td>The id of the sensor to be activated </td></tr>
@@ -215,8 +212,6 @@ It used for storing automata data and managing sensors. </p>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Calculate the Diagonal neighbors of the being and sets the four most significant bits of the 8bit Neighborhood State Map (NGS) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*_ng</td><td>The being to be checked against (is a pointer to the being to be checked) </td></tr>
@@ -249,8 +244,6 @@ It used for storing automata data and managing sensors. </p>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Deactivate a sensor in the 32bit Active Sensor Bit Map (ASBM) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">idx</td><td>The id of the sensor to be deactivated </td></tr>
@@ -283,8 +276,6 @@ It used for storing automata data and managing sensors. </p>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Check if a sensor is active in the 32bit Active Sensor Bit Map (ASBM) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bit_pos</td><td>The bit position(same as the id) of the sensor to be checked in the ASBM </td></tr>
@@ -317,8 +308,6 @@ It used for storing automata data and managing sensors. </p>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Update the 8bit Neighborhood State Map (NGS) by setting it's four less significant bits to dead(0) or alive(1) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*_ng</td><td>The being to be checked against (is a pointer to the being to be checked) </td></tr>

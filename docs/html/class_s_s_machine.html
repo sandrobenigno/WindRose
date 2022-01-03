@@ -142,8 +142,7 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>lostpack</b> = 0<
 <tr class="separator:a3f2b493e13b521efc2b48ef964fe6812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >The class to control the Serial State Machine. </p>
-<p >The <a class="el" href="class_s_s_machine.html" title="The class to control the Serial State Machine.">SSMachine</a> class holds the functions related to the Serial State Machine. <br  />
+<div class="textblock"><p >The <a class="el" href="class_s_s_machine.html" title="The class to control the Serial State Machine.">SSMachine</a> class holds the functions related to the Serial State Machine. <br  />
 It grabs the data of the Neighbors Sensing, and sends itself data through the Serial port. <br  />
 We dont call it directly, instead we call it from the class <a class="el" href="class_w_r_board.html" title="The class to control the WindRose Board (the body).">WRBoard</a> as &lt;ssm&gt;. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -170,8 +169,6 @@ We dont call it directly, instead we call it from the class <a class="el" href="
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>This function is used to calculate the CRC checksum for the data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dt</td><td>A byte of grabbed data to be used for the CRC checksum calculation </td></tr>
@@ -204,8 +201,6 @@ We dont call it directly, instead we call it from the class <a class="el" href="
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>This function grabs the data from the input stream and feeds the local neigbour sensing data holder. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*nb</td><td>A pointer to the targetted local neighbor sensing data holder </td></tr>
@@ -237,8 +232,6 @@ We dont call it directly, instead we call it from the class <a class="el" href="
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>This function reads the data from the input stream, calculates the CRC checksum and returns the data. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns the data after the CRC checksum is calculated </dd></dl>
 
 </div>
@@ -266,8 +259,6 @@ We dont call it directly, instead we call it from the class <a class="el" href="
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Sends the data of the itself Sensing data to the Serial port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*me</td><td>pointer to itself <a class="el" href="class_being.html" title="The base class (the soul) for all the beings in the simulation.">Being</a> object. </td></tr>
@@ -300,8 +291,6 @@ We dont call it directly, instead we call it from the class <a class="el" href="
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Initializes the Serial State Machine by setting its internal Stream object to a pointer to the Serial Hardware instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*stmObject</td><td>A pointer to the Serial Hardware instance. </td></tr>
