@@ -106,12 +106,19 @@ typedef struct
 
 /**
  * @brief Sensor types enumeration
- * wich the sequence matches the bit position of the ASBM
- * from its less significant bit to the most significant bit
+ * @details This enumeration defines all possible sensor types. \n
+ * The sequence here defines the ID of the sensor \n
+ * and it does match the bit position of the ASBM \n
+ * from its least significant bit to the most significant bit
  */
 enum sensor_types {
-    coord,angle,accel,ang_rate,gps_pos,
-    wind,light
+    coord    = 0,
+    angle    = 1,
+    accel    = 2,
+    ang_rate = 3,
+    gps_pos  = 4,
+    wind     = 5,
+    light    = 6
 };
 
 /**
