@@ -29,8 +29,8 @@ class Being
     /** @brief The age of the being, since the board is up. */
     uint32_t age = 0; //It just borns (0)
     /** @brief Sensor dada holder 
-     * It has all the sensor types defined in the Sensing.h file
-     * followed by the data from the captured sensors.
+     * It has all the sensor types defined in the Sensing.h file. \n
+     * Think of it as a holder for data captured from sensors, organized by sensor types.
     */
     SensingData sensors; //Sensing Data Struct
     /** @brief The neighborhood state mapping (NGS) */
