@@ -5,6 +5,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     ] ],
     [ "Config.h", "_config_8h.html", null ],
     [ "Directions.h", "_directions_8h.html", null ],
+    [ "main.cpp", "main_8cpp.html", null ],
     [ "Sensing.h", "_sensing_8h.html", "_sensing_8h" ],
     [ "SSMachine.h", "_s_s_machine_8h.html", [
       [ "SSMachine", "class_s_s_machine.html", "class_s_s_machine" ]
