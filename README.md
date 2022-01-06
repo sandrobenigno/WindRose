@@ -7,7 +7,7 @@ Custom Hardware , Firmware and Software for Robotic Cellular Automata Experiment
 <p>Author: Sandro Benigno, thanks to fellow professor Marilia Lyra Bergamo for the inspiration and all the applied resources. 
 She is the one who made this project possible and guided me by her research on Robotic Plants and Complexity Theories.</p>
 
-## Thge Wiki Pages
+## The Wiki Pages
 
 <p>In the <a href="https://github.com/sandrobenigno/WindRose/wiki">wiki pages</a> you can learn about the board, including the pinout and its usage.</p>
 
