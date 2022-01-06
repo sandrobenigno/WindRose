@@ -8,7 +8,7 @@
 
 #ifndef Config_h
 #define Config_h
-
+//#define WRDEBUG
 #define WRBAUDRATE 19200
 
 #endif

@@ -25,7 +25,7 @@ class Being
 
   public:
     /** @brief The state of the being (dead = 0, alive = 1) */
-    boolean alive = 1; //Starts Alive (1)
+    boolean alive = 0; //It doesn't born yet
     /** @brief The age of the being, since the board is up. */
     uint32_t age = 0; //It just borns (0)
     /** @brief Sensor dada holder 
@@ -37,6 +37,20 @@ class Being
     byte NGS =0x00; //Neigborhood Status Map
     /** @brief The active sensor mapping (ASBM) */
     long ASBM = 0x00; //Active Sensor Byte Maps starts unset (32 bit total)
+
+    /**
+     * @brief Sets the cell's state to alive.
+     */
+    void born(){
+        this->alive = 1;
+    }
+
+    /**
+     * @brief Sets the cell's state to dead.
+     */
+    void dye(){
+        this->alive = 0;
+    }
 
     /** @brief Activates a sensor in the 32bit Active Sensor Bit Map (ASBM) 
      * @param idx The id of the sensor to be activated
