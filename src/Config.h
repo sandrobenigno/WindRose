@@ -8,7 +8,7 @@
 
 #ifndef Config_h
 #define Config_h
-//#define WRDEBUG
-#define WRBAUDRATE 19200
+//#define WRDEBUG //Enables the debug mode when compiling
+#define WRBAUDRATE 19200 //The baud rate of the serial port
 
 #endif
