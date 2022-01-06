@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['deactivate_0',['deactivate',['../class_being.html#a4f105df0ef8cb340244a2988e26f1913',1,'Being']]],
-  ['disable_1',['disable',['../class_w_r_mux.html#abd9ed9d46f783cb3b8c5df70dfefb5c0',1,'WRMux']]]
+  ['calcdngs_0',['calcDNGS',['../class_being.html#a8af37ec7efca864165e95912b77d3280',1,'Being']]],
+  ['checksum_1',['checksum',['../class_s_s_machine.html#adc29d517216e6cd0fd500b3e232c681e',1,'SSMachine']]],
+  ['clearbuffer_2',['clearBuffer',['../class_s_s_machine.html#a49466e4aae06be630946725f2c4a40cb',1,'SSMachine']]]
 ];

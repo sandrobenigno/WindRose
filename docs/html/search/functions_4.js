@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['getdata_0',['getData',['../class_s_s_machine.html#a3ccc4cad1c055afa8c5769fc804de16e',1,'SSMachine']]],
-  ['getdir_1',['getDir',['../class_w_r_mux.html#ace444d0b7a450f96cb368a5384b1e400',1,'WRMux']]],
-  ['getdirchar_2',['getdirchar',['../class_w_r_mux.html#a28b177ee69d274c15d76c24c1c29b3ad',1,'WRMux']]]
+  ['enable_0',['enable',['../class_w_r_mux.html#a8889b879f89f72b756ca6a08ce767dbc',1,'WRMux']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['enable_0',['enable',['../class_w_r_mux.html#a8889b879f89f72b756ca6a08ce767dbc',1,'WRMux']]]
+  ['deactivate_0',['deactivate',['../class_being.html#a4f105df0ef8cb340244a2988e26f1913',1,'Being']]],
+  ['disable_1',['disable',['../class_w_r_mux.html#abd9ed9d46f783cb3b8c5df70dfefb5c0',1,'WRMux']]],
+  ['dye_2',['dye',['../class_being.html#a0b8fe24599e43384f3e17dc28f936c08',1,'Being']]]
 ];

@@ -1,8 +1,10 @@
 var class_being =
 [
     [ "activate", "class_being.html#ab66987e2af943c3cf3cea94865057628", null ],
+    [ "born", "class_being.html#a8a95a697dc9dbf6335dde2f156ffcb10", null ],
     [ "calcDNGS", "class_being.html#a8af37ec7efca864165e95912b77d3280", null ],
     [ "deactivate", "class_being.html#a4f105df0ef8cb340244a2988e26f1913", null ],
+    [ "dye", "class_being.html#a0b8fe24599e43384f3e17dc28f936c08", null ],
     [ "isactive", "class_being.html#a175e523f5a0a49ae34206862ecf5eda0", null ],
     [ "updateAge", "class_being.html#adeffa3f547e883503e4a40ddb7097532", null ],
     [ "updateNGS", "class_being.html#a24c23841ee9d3b496a7eb76093767d48", null ],
