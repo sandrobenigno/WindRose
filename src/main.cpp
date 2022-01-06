@@ -4,7 +4,7 @@
  * @details The main.cpp file imports the headers of the two main classes of the project. \n
  * The class WRBoard is the body of the WindRose cell ,as it controls the multiplexer, the LEDs and runs the Serial State Machine. \n
  * The class Being represents the cell's being. It's the soul of each WindRose cell and drives the sensing data.
- * @author Sandro Benigno, thanks to fellow professor Marilia Lira Bergamo for the inspirartion and all the applied resources. \n
+ * @author Sandro Benigno, thanks to fellow professor Marilia Lyra Bergamo for the inspirartion and all the applied resources. \n
  * She is the one who made this project possible and inspired us in her research on Robotic Plants and Complexity Theories.
  * @version 1.0
  * @date 2020-01-01
