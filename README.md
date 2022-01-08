@@ -18,4 +18,4 @@ All the files and classes are <a target="_blank" rel="noopener noreferrer" href=
 
 <p>We fabricate the boards through Seeed Fusion PCB Assembly Service. Check how to <a href="https://github.com/sandrobenigno/WindRose/wiki/Fabricate-yours%21">fabricate yours!</a></p>
 
-<p><img src="docs/images/wr_board.jpg"></p>
+<p><img src="docs/images/wr_boards.jpg"></p>
