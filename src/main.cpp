@@ -59,7 +59,7 @@ void loop() {
   
   // Comunication Block ////////////////////////////////////////////////////////
   timebuffering = millis(); //Reset the timer
-  while (millis() - timebuffering < 300) //Wait for 200ms to buffer the data
+  while (millis() - timebuffering < 300) //Wait for 300ms to buffer the data
   {
     if(mySelf.alive) {
       wr.ssm.sendData(&mySelf); //sending data while buffering
