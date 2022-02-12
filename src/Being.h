@@ -102,26 +102,26 @@ class Being
             switch (i){
                 case N:
                     if(_ng[N].alive){
-                        DNGS |= (_ng[N].NGS >> W & 0x01) << NW;  //Inferring NW
-                        DNGS |= (_ng[N].NGS >> E & 0x01) << NE;  //Inferring NE
+                        DNGS |= (_ng[N].NGS >> W & 0x01) << N_W;  //Inferring NW
+                        DNGS |= (_ng[N].NGS >> E & 0x01) << N_E;  //Inferring NE
                     }
                     break;
                 case E:
                     if(_ng[E].alive){
-                        DNGS |= (_ng[E].NGS >> N & 0x01) << NE;  //Inferring NE
-                        DNGS |= (_ng[E].NGS >> S & 0x01) << SE;  //Inferring SE
+                        DNGS |= (_ng[E].NGS >> N & 0x01) << N_E;  //Inferring NE
+                        DNGS |= (_ng[E].NGS >> S & 0x01) << S_E;  //Inferring SE
                     }
                     break;
                 case S:
                     if(_ng[S].alive){
-                        DNGS |= (_ng[S].NGS >> E & 0x01) << SE;  //Inferring SE
-                        DNGS |= (_ng[S].NGS >> W & 0x01) << SW;  //Inferring SW
+                        DNGS |= (_ng[S].NGS >> E & 0x01) << S_E;  //Inferring SE
+                        DNGS |= (_ng[S].NGS >> W & 0x01) << S_W;  //Inferring SW
                     }
                     break;
                 case W:
                     if(_ng[W].alive){
-                        DNGS |= (_ng[W].NGS >> S & 0x01) << SW;  //Inferring SW
-                        DNGS |= (_ng[W].NGS >> N & 0x01) << NW;  //Inferring NW
+                        DNGS |= (_ng[W].NGS >> S & 0x01) << S_W;  //Inferring SW
+                        DNGS |= (_ng[W].NGS >> N & 0x01) << N_W;  //Inferring NW
                     }
                     break;
                 default:

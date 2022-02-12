@@ -16,9 +16,9 @@
 #define W 3
 
 //Secondary directional edges (diagonal cw from north)
-#define NE 4
-#define SE 5
-#define SW 6
-#define NW 7
+#define N_E 4
+#define S_E 5
+#define S_W 6
+#define N_W 7
 
 #endif
