@@ -54,7 +54,7 @@ class WRBoard
         void init(uint16_t _baudrate){
             pinMode(WRLED, OUTPUT); //Set the LED pin as output
             this->led.on(); //Turn on the LED
-            Serial.begin(_baudrate);
+            Serial.begin(_baudrate); //Start the Serial Hardware at specified baudrate
             this->ssm.setSerial(&Serial); //Set the serial port of the Serial State Machine
             this->mux.init(); //Set up the WindRose Mux
         }

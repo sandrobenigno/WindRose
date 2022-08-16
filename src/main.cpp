@@ -27,6 +27,7 @@ unsigned long timebuffering = 0; //The time the automata has been buffering
 void setup() {
 
   wr.init(WRBAUDRATE); //Initialize the board setting the baud rate
+  wr.led.off(); //Turn off the LED
   wr.mux.setDir(N); //Set the mux to the north edge
   wr.mux.enable(); //Enable the WindRose Mux
   delay(100); //Wait for the serial buffer to get some data
