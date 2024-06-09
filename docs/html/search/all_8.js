@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['max_5fsensing_5fbytes_5fper_5fpacket_1',['MAX_SENSING_BYTES_PER_PACKET',['../_sensing_8h.html#aa5e91be5c249ccf7907baa2c719d40e2',1,'Sensing.h']]],
-  ['mux_2',['mux',['../class_w_r_board.html#ae398db3aed4f89e0694b2b9dc9a289f0',1,'WRBoard']]],
-  ['myself_3',['mySelf',['../main_8cpp.html#ada53297c6f8674a451a5f52b987ab9b7',1,'main.cpp']]]
+  ['led_0',['led',['../class_w_r_board.html#a1b2e89959b1fb24019abfbe2ab24a5ea',1,'WRBoard']]],
+  ['ledcontrol_1',['LEDControl',['../class_l_e_d_control.html',1,'']]],
+  ['light_5ft_2',['Light_t',['../struct_light__t.html',1,'']]],
+  ['loop_3',['loop',['../main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]]
 ];

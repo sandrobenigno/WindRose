@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['timebuffering_0',['timebuffering',['../main_8cpp.html#a1dec0897920bac4ea6fe0c45d435abb8',1,'main.cpp']]]
+  ['sensors_0',['sensors',['../class_being.html#a81f4b93d178a350d162297041bb37da7',1,'Being']]],
+  ['ssm_1',['ssm',['../class_w_r_board.html#aea811bcb6673b445cbff8db349787d0d',1,'WRBoard']]]
 ];

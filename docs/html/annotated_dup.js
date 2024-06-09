@@ -4,6 +4,7 @@ var annotated_dup =
     [ "Ang_rate_t", "struct_ang__rate__t.html", null ],
     [ "Angle_t", "struct_angle__t.html", null ],
     [ "Being", "class_being.html", "class_being" ],
+    [ "Circadian", "class_circadian.html", "class_circadian" ],
     [ "Coord_t", "struct_coord__t.html", null ],
     [ "Gps_pos_t", "struct_gps__pos__t.html", null ],
     [ "LEDControl", "class_l_e_d_control.html", null ],

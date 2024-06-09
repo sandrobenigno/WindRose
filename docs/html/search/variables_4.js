@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sensors_0',['sensors',['../class_being.html#a81f4b93d178a350d162297041bb37da7',1,'Being']]],
-  ['ssm_1',['ssm',['../class_w_r_board.html#aea811bcb6673b445cbff8db349787d0d',1,'WRBoard']]]
+  ['nghood_0',['ngHood',['../main_8cpp.html#a12bd0b9552a12a829e3aa05e3b0e2fc4',1,'main.cpp']]],
+  ['ngs_1',['NGS',['../class_being.html#aa9b0b8b7396c3b1f3503ff1c8e9f75a9',1,'Being']]]
 ];

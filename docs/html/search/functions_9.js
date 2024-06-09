@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readsum_0',['readsum',['../class_s_s_machine.html#a28f797f49baa2316763d115694e76891',1,'SSMachine']]]
+  ['minutestomillis_0',['minutesToMillis',['../class_circadian.html#a464af6f7818e5c35523c996e0d6bb3ed',1,'Circadian']]]
 ];
